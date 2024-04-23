@@ -2,17 +2,17 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 
 def predict_temperature_linear(X_train, X_test, y_train, y_test):
-    # Step 3: Choose a regression model
-    model = LinearRegression()  # Example: Linear Regression
-
-    # Step 4: Train the model
+    # Create a Linear Regression model
+    model = LinearRegression()
+    
+    # Train the model using the training data
     model.fit(X_train, y_train)
-
-    # Step 5: Evaluate the model
+    
+    # Use the trained model to make predictions on the test data
     y_pred = model.predict(X_test)
     
-    # Calculate mean squared error
+    # Calculate the mean squared error (MSE) between the actual and predicted values
     mse = mean_squared_error(y_test, y_pred)
 
-    # Step 6: Return predictions
+    # Return the predicted values and the mean squared error
     return y_pred, mse
