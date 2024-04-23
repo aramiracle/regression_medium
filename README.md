@@ -13,11 +13,11 @@ The dataset used for this project is the [Air Quality Data Set](https://www.kagg
 
 ## Files
 
-- **linear_regression.py**: Implements linear regression model for temperature prediction.
-- **polynomial_regression.py**: Implements polynomial regression model for temperature prediction.
-- **ridge_regression.py**: Implements ridge regression model for temperature prediction.
-- **lasso_regression.py**: Implements lasso regression model for temperature prediction.
-- **support_vector_regression.py**: Implements support vector regression model for temperature prediction.
+- **models/linear_regression.py**: Implements linear regression model for temperature prediction.
+- **models/polynomial_regression.py**: Implements polynomial regression model for temperature prediction.
+- **models/ridge_regression.py**: Implements ridge regression model for temperature prediction.
+- **models/lasso_regression.py**: Implements lasso regression model for temperature prediction.
+- **models/support_vector_regression.py**: Implements support vector regression model for temperature prediction.
 - **main.py**: Entry point script that orchestrates the data processing, model training, evaluation, and prediction.
 - **preprocess.py**: Preprocessing script that converts the original dataset into a suitable format for modeling.
 
@@ -27,6 +27,29 @@ The `preprocess.py` script is responsible for preprocessing the dataset before i
 
 1. **Conversion to Float**: It converts numerical values represented as strings with comma as decimal separator to float format.
 2. **Replacing Negative Values**: It replaces negative values with the median of the corresponding feature column.
+
+## Steps for prediction in `main.py`
+
+1. **Load the dataset**: Load the dataset containing air quality features and temperature values.
+
+2. **Split Data**: Split the dataset into features (X) and target (y), where X represents the input features and y represents the target variable (temperature).
+
+3. **Split Data into Training and Testing Sets**: Divide the dataset into training and testing sets to train the model on one set and evaluate its performance on another.
+
+4. **Normalize Data**: Standardize the features by scaling them to have a mean of 0 and a standard deviation of 1.
+
+5. **Make Predictions**: Use different regression models to make temperature predictions. The models used in this project include:
+   - Linear Regression
+   - Polynomial Regression
+   - Ridge Regression
+   - Lasso Regression
+   - Support Vector Regression (SVR)
+
+6. **Calculate Mean Squared Error (MSE)**: Compute the Mean Squared Error (MSE) for each regression model to evaluate its performance.
+
+7. **Print MSE Values**: Display the MSE values for each regression model.
+
+8. **Save Predictions to CSV File**: Store the predicted temperature values along with the real temperature values in a CSV file for further analysis.
 
 ## Usage
 
