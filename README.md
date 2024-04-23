@@ -30,26 +30,36 @@ The `preprocess.py` script is responsible for preprocessing the dataset before i
 
 ## Steps for prediction in `main.py`
 
-1. **Load the dataset**: Load the dataset containing air quality features and temperature values.
+### 1. Load the Dataset
+   - Load the dataset containing air quality data, particularly the temperature, from a CSV file.
 
-2. **Split Data**: Split the dataset into features (X) and target (y), where X represents the input features and y represents the target variable (temperature).
+### 2. Split Data into Features and Target
+   - Separate the dataset into feature variables (X) and the target variable (y), where the target is the temperature.
 
-3. **Split Data into Training and Testing Sets**: Divide the dataset into training and testing sets to train the model on one set and evaluate its performance on another.
+### 3. Split Data into Training and Testing Sets
+   - Split the dataset into training and testing sets using a ratio of 80:20, respectively, for model evaluation.
 
-4. **Normalize Data**: Standardize the features by scaling them to have a mean of 0 and a standard deviation of 1.
+### 4. Normalize Data
+   - Standardize the feature variables using `StandardScaler` to ensure that each feature contributes equally to the predictions.
 
-5. **Make Predictions**: Use different regression models to make temperature predictions. The models used in this project include:
-   - Linear Regression
-   - Polynomial Regression
-   - Ridge Regression
-   - Lasso Regression
-   - Support Vector Regression (SVR)
+### 5. Make Predictions Using Different Regression Models
+   - Utilize various regression models to predict temperature:
+     - Linear Regression
+     - Polynomial Regression
+     - Ridge Regression
+     - Lasso Regression
+     - Support Vector Regression (SVR)
 
-6. **Calculate Mean Squared Error (MSE)**: Compute the Mean Squared Error (MSE) for each regression model to evaluate its performance.
+### 6. Store Evaluation Values in a Dictionary
+   - Store evaluation metrics, including Mean Squared Error (MSE), Mean Absolute Percentage Error (MAPE), and R-squared (R2), for each regression model in a dictionary.
 
-7. **Print MSE Values**: Display the MSE values for each regression model.
+### 7. Print Evaluation Scores for Each Regression Model
+   - Display the evaluation scores for each regression model, including MSE, MAPE, and R2.
 
-8. **Save Predictions to CSV File**: Store the predicted temperature values along with the real temperature values in a CSV file for further analysis.
+### 8. Save Predictions to a CSV File
+   - Create a DataFrame containing real temperature values and predicted values from each regression model.
+   - Save the DataFrame to a CSV file named `temperature_prediction.csv` in the `results` directory.
+
 
 ## Usage
 
