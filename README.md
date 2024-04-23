@@ -29,7 +29,12 @@ The `preprocess.py` script is responsible for preprocessing the dataset before i
 
 To use these models for temperature prediction, follow these steps:
 
-1. Ensure you have Python installed along with necessary libraries (e.g., scikit-learn, pandas).
+1. Ensure you have Python installed along with necessary libraries (scikit-learn, pandas, NumPy). You can install them like below in command line:
+
+```
+pip install -r requirements.txt
+```
+
 2. Run `preprocess.py` to preprocess the dataset and save the preprocessed data.
 3. Modify `main.py` to load the preprocessed dataset and adjust any parameters if needed.
 4. Run `main.py`. This will train each regression model, evaluate them, make predictions, and save the results.
