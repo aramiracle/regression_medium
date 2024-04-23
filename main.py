@@ -46,7 +46,7 @@ if __name__ == '__main__':
     # Step 7: Print evaluation scores for each regression model
     print("Evaluation Scores:")
     for model_name, (mse, mape, r2) in metric_values.items():
-        print(f"{model_name} Regression Metrics: \n\tMSE:{round(mse, 5)} MAPE:{round(mape, 5)} R2:{round(r2, 5)}")
+        print(f"{model_name} Regression Metrics: \n\tMSE:{round(mse, 4)} MAPE:{round(mape, 4)} R2:{round(r2, 4)}")
 
     # Step 8: Save predictions to a CSV file
     predicted_df = pd.DataFrame({
