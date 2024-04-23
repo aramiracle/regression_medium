@@ -17,9 +17,6 @@ def predict_temperature_lasso(X_train, X_test, y_train, y_test, poly_degree=3, a
     lasso_cv_model = LassoCV(alphas=alphas, max_iter=100000, tol=1e-1)
     lasso_cv_model.fit(X_train_poly, y_train)
 
-    # Step 2: Evaluate the model
-    y_pred = lasso_cv_model.predict(X_test_poly)
-
     # Print the selected alpha
     print("Best Alpha for Lasso:", lasso_cv_model.alpha_)
 
@@ -31,4 +28,4 @@ def predict_temperature_lasso(X_train, X_test, y_train, y_test, poly_degree=3, a
     y_pred_best_alpha = lasso_cv_model_best_alpha.predict(X_test_poly)
     mse_best_alpha = mean_squared_error(y_test, y_pred_best_alpha)
 
-    return y_pred, mse_best_alpha
+    return y_pred_best_alpha, mse_best_alpha

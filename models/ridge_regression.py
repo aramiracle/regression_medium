@@ -17,9 +17,6 @@ def predict_temperature_ridge(X_train, X_test, y_train, y_test, poly_degree=3, a
     ridge_cv_model = RidgeCV(alphas=alphas)
     ridge_cv_model.fit(X_train_poly, y_train)
 
-    # Step 6: Evaluate the model
-    y_pred = ridge_cv_model.predict(X_test_poly)
-
     # Print the selected alpha
     print("Best Alpha for Ridge:", ridge_cv_model.alpha_)
 
