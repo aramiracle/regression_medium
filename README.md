@@ -8,6 +8,9 @@ This project includes Python scripts implementing different regression models to
 - **Lasso Regression**: Applies L1 regularization to linear regression to encourage sparsity in the coefficients.
 - **Support Vector Regression (SVR)**: Utilizes support vector machines for regression tasks.
 
+## Dataset
+The dataset used for this project is the [Air Quality Data Set](https://www.kaggle.com/datasets/fedesoriano/air-quality-data-set) available on Kaggle. It provides various features including temperature, humidity, and air quality measurements.
+
 ## Files
 
 - **linear_regression.py**: Implements linear regression model for temperature prediction.
