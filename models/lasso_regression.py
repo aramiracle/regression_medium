@@ -1,6 +1,6 @@
 import numpy as np
 from sklearn.preprocessing import PolynomialFeatures
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error, mean_absolute_percentage_error, r2_score
 from sklearn.linear_model import Lasso, LassoCV
 
 def predict_temperature_lasso(X_train, X_test, y_train, y_test, poly_degree=3, alpha_range=(-5, 5), num_alphas=100):
@@ -26,8 +26,14 @@ def predict_temperature_lasso(X_train, X_test, y_train, y_test, poly_degree=3, a
     # Predict the target variable using the trained Lasso model on the testing data
     y_pred_best_alpha = lasso_cv_model_best_alpha.predict(X_test_poly)
 
-    # Calculate Mean Squared Error (MSE) using the predicted values and actual target values
-    mse_best_alpha = mean_squared_error(y_test, y_pred_best_alpha)
+    # Calculate the mean squared error (MSE) between the actual and predicted values
+    mse = mean_squared_error(y_test, y_pred_best_alpha)
+    
+    # Calculate R-squared
+    mape = mean_absolute_percentage_error(y_test, y_pred_best_alpha)
 
-    # Return predicted values and mean squared error
-    return y_pred_best_alpha, mse_best_alpha
+    # Calculate R-squared
+    r2 = r2_score(y_test, y_pred_best_alpha)
+
+    # Return the predicted values, MSE, and R-squared
+    return y_pred_best_alpha, (mse, mape, r2)

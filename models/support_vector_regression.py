@@ -1,5 +1,5 @@
 from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error, mean_absolute_percentage_error, r2_score
 from sklearn.svm import SVR
 
 def predict_temperature_svr(X_train, X_test, y_train, y_test):
@@ -17,8 +17,14 @@ def predict_temperature_svr(X_train, X_test, y_train, y_test):
     # Make predictions on the scaled test data
     y_pred = svr_model.predict(X_test_scaled)
 
-    # Calculate mean squared error between predicted and true target values
+    # Calculate the mean squared error (MSE) between the actual and predicted values
     mse = mean_squared_error(y_test, y_pred)
+    
+    # Calculate R-squared
+    mape = mean_absolute_percentage_error(y_test, y_pred)
 
-    # Return predicted values and mean squared error
-    return y_pred, mse
+    # Calculate R-squared
+    r2 = r2_score(y_test, y_pred)
+
+    # Return the predicted values, MSE, and R-squared
+    return y_pred, (mse, mape, r2)

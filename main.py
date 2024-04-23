@@ -12,7 +12,8 @@ from models.support_vector_regression import predict_temperature_svr
 
 if __name__ == '__main__':
     # Step 1: Load the dataset
-    df = pd.read_csv('dataset/air_quality_converted.csv')
+    dataset_path = 'dataset/air_quality_converted.csv'
+    df = pd.read_csv(dataset_path)
 
     predicted_column_name = 'T'  # Name of the target column (temperature)
 
@@ -37,15 +38,15 @@ if __name__ == '__main__':
         'SVR': predict_temperature_svr(X_train_normalized, X_test_normalized, y_train, y_test)
     }
 
-    # Step 6: Store Mean Squared Error (MSE) values in a dictionary
-    mse_values = {}
+    # Step 6: Store evaluation values in a dictionary
+    metric_values = {}
     for model_name, prediction_data in predictions.items():
-        mse_values[model_name] = prediction_data[1]
+        metric_values[model_name] = prediction_data[1]
 
-    # Step 7: Print MSE values for each regression model
-    print("MSE Values:")
-    for model_name, mse in mse_values.items():
-        print(f"{model_name} Regression: {round(mse, 5)}")
+    # Step 7: Print evaluation scores for each regression model
+    print("Evaluation Scores:")
+    for model_name, (mse, mape, r2) in metric_values.items():
+        print(f"{model_name} Regression Metrics: \n\tMSE:{round(mse, 5)} MAPE:{round(mape, 5)} R2:{round(r2, 5)}")
 
     # Step 8: Save predictions to a CSV file
     predicted_df = pd.DataFrame({
@@ -57,7 +58,8 @@ if __name__ == '__main__':
         'Predicted SVR': predictions['SVR'][0]
     }).reset_index(drop=True)
 
-    os.makedirs('results', exist_ok=True)  # Create a directory to store results if it doesn't exist
+    results_dir = 'results'
+    os.makedirs(results_dir, exist_ok=True)  # Create a directory to store results if it doesn't exist
 
     # Save the DataFrame to a CSV file
-    predicted_df.to_csv('results/temperature_prediction.csv')
+    predicted_df.to_csv(os.path.join(results_dir, 'temperature_prediction.csv'), index=False)
