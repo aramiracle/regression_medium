@@ -17,7 +17,7 @@ def predict_temperature_lasso(X_train, X_test, y_train, y_test, poly_degree=3, a
     lasso_cv_model.fit(X_train_poly, y_train)
 
     # Print the best alpha found during cross-validation
-    print("Best Alpha for Ridge:", lasso_cv_model.alpha_)
+    print("Best Alpha for Lasso:", lasso_cv_model.alpha_)
 
     # Initialize Lasso model with the best alpha value selected by LassoCV, then fit it on the entire training set
     lasso_cv_model_best_alpha = Lasso(alpha=lasso_cv_model.alpha_, max_iter=100000, tol=1e-2)
