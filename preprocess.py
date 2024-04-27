@@ -13,8 +13,9 @@ def convert_to_float(num_str):
 
 # Function to replace negative values in a series with the median of non-negative values
 def replace_negative_with_median(series):
-    series_float = series.apply(lambda x: float(x.replace(',', '.')) if isinstance(x, str) else x)
     # Convert string numbers to float, replacing comma with dot
+    series_float = series.apply(lambda x: float(x.replace(',', '.')) if isinstance(x, str) else x)
+    
     median = series_float[series_float >= 0].median()  # Calculate median of non-negative values
     for i in range(len(series_float)):
         if isinstance(series_float.iloc[i], float) and series_float.iloc[i] < 0:
