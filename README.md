@@ -85,3 +85,5 @@ python main.py
 ## Output
 
 The output will include the Mean Squared Error (MSE) values for each regression model, along with the predictions saved in a CSV file named temperature_prediction.csv under the results directory.
+
+Finally there is a medium article you can read for deeper insight. This is a [link](https://medium.com/@a.r.amouzad.m/classic-machine-learning-part-2-4-regression-24086d7cc374) to story.
